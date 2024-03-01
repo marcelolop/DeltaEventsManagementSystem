@@ -1,0 +1,130 @@
+﻿@model IEnumerable<IPBLL.UpdateEventRequest>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Events</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+</p>
+
+
+<table class="table table-striped table-bordered table-hover">
+    <thead class="thead-dark ">
+        <tr>
+            <!-- 
+            <th class="text-center align-middle">
+                @Html.DisplayNameFor(model => model.EventId)
+            </th>
+            -->
+            <th class="text-center align-middle">
+                Event Name
+            </th>
+            <th class="text-center align-middle">
+                Event Description
+            </th>
+            <th class="text-center align-middle">
+                Date and Time
+            </th>
+            <th class="text-center align-middle">
+                Location
+            </th>
+            <th class="text-center align-middle">
+                Max Attendees
+            </th>
+            <th class="text-center align-middle">
+                Organizer Name
+            </th>
+            <th class="text-center align-middle">
+                Organizer Contact
+            </th>
+            <th class="text-center align-middle">
+                Edit
+            </th>
+
+            <th class="text-center align-middle">
+                Delete
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <!-- 
+                <td class="align-middle">
+                @Html.DisplayFor(modelItem => item.EventId)
+            </td>
+            -->
+             <td class="align-middle">
+                @if(item.EventName.Length > 20)
+                {
+                    <span title="@item.EventName">@item.EventName.Substring(0, 20)...</span>
+                    <div class="tooltip-content" style="display: none;">@item.EventName</div>
+                }
+                else
+                {
+                    @item.EventName
+                }
+            </td>
+             <td class="align-middle">
+                @if(item.EventDescription.Length > 20)
+                {
+                    <span title="@item.EventDescription">@item.EventDescription.Substring(0, 20)...</span>
+                    <div class="tooltip-content" style="display: none;">@item.EventDescription</div>
+                }
+                else
+                {
+                    @item.EventDescription
+                }
+            </td>
+                <td class="align-middle">
+                @Html.DisplayFor(modelItem => item.EventDate)
+            </td>
+                <td class="align-middle">
+                @if(item.EventLocation.Length > 20)
+                {
+                    <span title="@item.EventLocation">@item.EventLocation.Substring(0, 20)...</span>
+                    <div class="tooltip-content" style="display: none;">@item.EventLocation</div>
+                }
+                else
+                {
+                    @item.EventLocation
+                }
+            </td>
+                <td class="align-middle">
+                @Html.DisplayFor(modelItem => item.MaxAttendees)
+            </td>
+                <td class="align-middle">
+                @if(item.OrganizerName.Length > 20)
+                {
+                    <span title="@item.OrganizerName">@item.OrganizerName.Substring(0, 20)...</span>
+                    <div class="tooltip-content" style="display: none;">@item.OrganizerName</div>
+                }
+                else
+                {
+                    @item.OrganizerName
+                }
+            </td>
+                <td class="align-middle">
+                @if(item.OrganizerContact.Length > 20)
+                {
+                    <span title="@item.OrganizerContact">@item.OrganizerContact.Substring(0, 20)...</span>
+                    <div class="tooltip-content" style="display: none;">@item.OrganizerContact</div>
+                }
+                else
+                {
+                    @item.OrganizerContact
+                }
+            </td>
+            <td class="text-center align-middle">
+                <a asp-action="Edit" asp-route-id="@item.EventId" class="btn btn-primary">Edit</a>
+            </td>
+            <td class="text-center align-middle">
+                <a asp-action="Delete" asp-route-id="@item.EventId" class="btn btn-secondary">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

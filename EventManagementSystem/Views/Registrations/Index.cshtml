@@ -1,0 +1,179 @@
+﻿@model IEnumerable<IPBLL.Models.RegistrationModels.RegistrationsList>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+</p>
+<div class="table-responsive">
+    <table class="table table-striped table-bordered table-hover">
+        <thead class="thead-dark ">
+            <tr>
+                <!--
+                <th>
+                    @Html.DisplayNameFor(model => model.EventId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AttendeeId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TicketId)
+                </th>
+                -->
+               <th class="text-center align-middle">
+                        Event Name
+                 </th>
+                <th class="text-center align-middle">
+                    Date of Registration
+                </th>
+                <th class="text-center align-middle">
+                    Payment Status
+                </th>
+                <th class="text-center align-middle">
+                    Payment Method
+                </th>
+                <th class="text-center align-middle">
+                    Attendee Name
+                </th>
+                <th class="text-center align-middle">
+                    Attendee Email
+                </th>
+                <th class="text-center align-middle">
+                    Attendee Phone Number
+                </th>
+                <th class="text-center align-middle">
+                    Attendee Address
+                </th>
+                <th class="text-center align-middle">
+                    Presence Confirmed
+                </th>
+                <th class="text-center align-middle">
+                    Quantity 
+                </th>
+                <th class="text-center align-middle">
+                    Ticket Price
+                </th>
+                <th class="text-center align-middle">
+                    Total Price
+                </th>
+                <th class="text-center align-middle">
+                    Ticket Type
+                </th>
+                <th class="text-center align-middle">
+                    Edit
+                </th>
+                <!--
+                <th class="text-center align-middle">
+                    Details
+                </th>
+                -->
+                <th class="text-center align-middle">
+                    Delete
+                </th>
+            </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <!--
+             <td class="align-middle">
+                @Html.DisplayFor(modelItem => item.EventId)
+            </td>
+            <td class="align-middle">
+                @Html.DisplayFor(modelItem => item.AttendeeId)
+            </td>
+            <td class="align-middle">
+                @Html.DisplayFor(modelItem => item.TicketId)
+            </td>
+                -->
+            <td class="align-middle">
+                @if(item.EventName.Length > 20)
+                {
+                    <span title="@item.EventName">@item.EventName.Substring(0, 20)...</span>
+                    <div class="tooltip-content" style="display: none;">@item.EventName</div>
+                }
+                else
+                {
+                    @item.EventName
+                }
+            </td>
+            <td class="align-middle text-center">
+                @Html.DisplayFor(modelItem => item.RegistrationDate)
+            </td>
+             <td class="align-middle text-center">
+                @Html.DisplayFor(modelItem => item.PaymentStatus)
+            </td>
+            <td class="align-middle text-center">
+                @Html.DisplayFor(modelItem => item.PaymentMethod)
+            </td>
+            <td class="align-middle">
+                @if(item.AttendeeName.Length > 20)
+                {
+                    <span title="@item.AttendeeName">@item.AttendeeName.Substring(0, 20)...</span>
+                    <div class="tooltip-content" style="display: none;">@item.AttendeeName</div>
+                }
+                else
+                {
+                    @item.AttendeeName
+                }
+            </td>
+            <td class="align-middle">
+                @if(item.AttendeeEmail.Length > 20)
+                {
+                    <span title="@item.AttendeeEmail">@item.AttendeeEmail.Substring(0, 20)...</span>
+                    <div class="tooltip-content" style="display: none;">@item.AttendeeEmail</div>
+                }
+                else
+                {
+                    @item.AttendeeEmail
+                }
+            </td>
+            <td class="align-middle">
+                @Html.DisplayFor(modelItem => item.AttendeePhoneNumber)
+            </td>
+                <td class="align-middle">
+                @if (item.AttendeeAddress.Length > 20)
+                {
+                    <span title="@item.AttendeeAddress">@item.AttendeeAddress.Substring(0, 20)...</span>
+                    <div class="tooltip-content" style="display: none;">@item.AttendeeAddress</div>
+                }
+                else
+                {
+                    @item.AttendeeAddress
+                }
+            </td>
+            <td class="align-middle text-center">
+                @Html.DisplayFor(modelItem => item.HasConfirmedAttendance)
+            </td>
+             <td class="align-middle text-center">
+                @Html.DisplayFor(modelItem => item.TicketQuantity)
+            </td>
+            <td class="align-middle text-center">
+                @Html.DisplayFor(modelItem => item.TicketPrice)
+            </td>
+             <td class="align-middle text-center">
+                @Html.DisplayFor(modelItem => item.TotalAmountPaid)
+            </td>
+             <td class="align-middle text-center">
+                @Html.DisplayFor(modelItem => item.TicketType)
+            </td>
+              <td class="text-center align-middle text-center">
+                        <a asp-action="EditRegistrationView" asp-route-eventId="@item.EventId" asp-route-attendeeId="@item.AttendeeId" class="btn btn-primary">Edit</a>
+              </td>
+              <!--
+
+              <td class="text-center align-middle text-center">
+                    <a asp-action="Details" asp-route-eventId="@item.EventId" asp-route-attendeeId="@item.AttendeeId">Details</a>
+             </td>
+              -->
+             <td class="text-center align-middle text-center">
+                        <a asp-action="DeleteRegistration" asp-route-eventId="@item.EventId" asp-route-attendeeId="@item.AttendeeId" class="btn btn-secondary">Delete</a>
+             </td>
+        </tr>
+}
+    </tbody>
+</table>
