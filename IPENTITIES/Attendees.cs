@@ -76,9 +76,9 @@ namespace IPENTITIES
                 {
                     throw new ArgumentNullException(nameof(AttendeePhoneNumber), "AttendeePhoneNumber cannot be null or empty");
                 }
-                if (value.Length > 15)
+                if (value.Length != 10)
                 {
-                    throw new ArgumentOutOfRangeException(nameof(AttendeePhoneNumber), "AttendeePhoneNumber cannot be more than 15 characters");
+                    throw new ArgumentOutOfRangeException(nameof(AttendeePhoneNumber), "AttendeePhoneNumber must be 10 characters long");
                 }
                 _attendeePhoneNumber = value;
             }

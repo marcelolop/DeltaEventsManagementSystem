@@ -33,7 +33,6 @@ namespace IPENTITIES
                 {
                     throw new ArgumentOutOfRangeException(nameof(EventId), "EventId cannot be less than or equal to 0");
                 }
-                //checking if the id value matches the id in the database
                 _eventId = value;
             }
         }
@@ -81,10 +80,10 @@ namespace IPENTITIES
                 {
                     throw new ArgumentOutOfRangeException(nameof(EventDate), "EventDate cannot be in the past");
                 }
-                if (value < DateTime.Now.AddDays(2))
-                {
-                    throw new ArgumentOutOfRangeException(nameof(EventDate), "EventDate cannot be less than 2 days from now");
-                }
+                //if (value < DateTime.Now.AddDays(2))
+                //{
+                //    throw new ArgumentOutOfRangeException(nameof(EventDate), "EventDate cannot be less than 2 days from now");
+                //}
                 _eventDate = value;
             }
         }

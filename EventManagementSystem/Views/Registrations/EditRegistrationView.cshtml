@@ -24,9 +24,13 @@
     };
 }
 
-<h1>EditRegistrationView</h1>
+<h1>Edit Registration </h1>
 
-<h4>UpdateRegistrationRequest</h4>
+<p>
+    Here you can update the registration details.
+</p>
+
+<h4>Registration Information</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -49,69 +53,68 @@
                 <span asp-validation-for="TicketId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="RegistrationDate" class="control-label"></label>
+                <label asp-for="RegistrationDate" class="control-label">Registration Date</label>
                 <input asp-for="RegistrationDate" class="form-control" value="@DateTime.Now.ToString()" />
-                <span asp-validation-for="RegistrationDate" class="text-danger"></span>
+                <span class="text-danger">@Html.ValidationMessageFor(model => model.RegistrationDate)</span>
             </div>
             <div class="form-group">
-                <label asp-for="PaymentStatus" class="control-label"></label>
+                <label asp-for="PaymentStatus" class="control-label">Payment Status</label>
                 <select asp-for="PaymentStatus" asp-items="paymentStatusOptions" class="form-control"></select>
-                <span asp-validation-for="PaymentStatus" class="text-danger"></span>
+                 <span class="text-danger">@Html.ValidationMessageFor(model => model.PaymentStatus)</span>
             </div>
             <div class="form-group">
-                <label asp-for="PaymentMethod" class="control-label"></label>
+                <label asp-for="PaymentMethod" class="control-label">Payment Method</label>
                 <select asp-for="PaymentMethod" asp-items="paymentMethodOptions" class="form-control"></select>
-                <span asp-validation-for="PaymentMethod" class="text-danger"></span>
+                 <span class="text-danger">@Html.ValidationMessageFor(model => model.PaymentMethod)</span>
             </div>
             <div class="form-group">
-                <label asp-for="AttendeeName" class="control-label"></label>
+                <label asp-for="AttendeeName" class="control-label">Attendee Name</label>
                 <input asp-for="AttendeeName" class="form-control" />
-                <span asp-validation-for="AttendeeName" class="text-danger"></span>
+                 <span class="text-danger">@Html.ValidationMessageFor(model => model.AttendeeName)</span>
             </div>
             <div class="form-group">
-                <label asp-for="AttendeeEmail" class="control-label"></label>
+                <label asp-for="AttendeeEmail" class="control-label">Attendee Email</label>
                 <input asp-for="AttendeeEmail" type="email" class="form-control" />
-                <span asp-validation-for="AttendeeEmail" class="text-danger"></span>
+                 <span class="text-danger">@Html.ValidationMessageFor(model => model.AttendeeEmail)</span>
             </div>
             <div class="form-group">
-                <label asp-for="AttendeePhoneNumber" class="control-label"></label>
+                <label asp-for="AttendeePhoneNumber" class="control-label">Attendee Phone Number</label>
                 <input asp-for="AttendeePhoneNumber" type="tel" class="form-control" />
-                <span asp-validation-for="AttendeePhoneNumber" class="text-danger"></span>
+                 <span class="text-danger">@Html.ValidationMessageFor(model => model.AttendeePhoneNumber)</span>
             </div>
             <div class="form-group">
-                <label asp-for="AttendeeAddress" class="control-label"></label>
+                <label asp-for="AttendeeAddress" class="control-label">Attendee Address</label>
                 <input asp-for="AttendeeAddress" class="form-control" />
-                <span asp-validation-for="AttendeeAddress" class="text-danger"></span>
+                 <span class="text-danger">@Html.ValidationMessageFor(model => model.AttendeeAddress)</span>
             </div>
             <div class="form-group form-check">
                 <label class="form-check-label">
                     <input class="form-check-input" asp-for="HasConfirmedAttendance" /> @Html.DisplayNameFor(model => model.HasConfirmedAttendance)
+                     <span class="text-danger">@Html.ValidationMessageFor(model => model.HasConfirmedAttendance)</span>
                 </label>
             </div>
             <div class="form-group">
-                <label asp-for="TicketPrice" class="control-label"></label>
-                <input asp-for="TicketPrice" type="number" class="form-control" />
-                <span asp-validation-for="TicketPrice" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="TicketQuantity" class="control-label"></label>
-                <input asp-for="TicketQuantity" type="number" class="form-control" />
-                <span asp-validation-for="TicketQuantity" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="TicketType" class="control-label"></label>
+                <label asp-for="TicketType" class="control-label">Ticket Type</label>
                 <select asp-for="TicketType" asp-items="ticketMethodOptions" class="form-control"></select>
-                <span asp-validation-for="TicketType" class="text-danger"></span>
+               <span class="text-danger">@Html.ValidationMessageFor(model => model.TicketType)</span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <label asp-for="TicketPrice" class="control-label">Ticekt Price</label>
+                <input asp-for="TicketPrice" type="number" class="form-control" />
+                <span class="text-danger">@Html.ValidationMessageFor(model => model.TicketPrice)</span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TicketQuantity" class="control-label"> Ticket Quantity</label>
+                <input asp-for="TicketQuantity" type="number" class="form-control" />
+                 <span class="text-danger">@Html.ValidationMessageFor(model => model.TicketQuantity)</span>
+            </div>
+            <div class="form-group mt-3">
+                <div class="d-flex justify-content-between">
+                    <input type="submit" value="Save" class="btn btn-primary m-2" />
+                    <a asp-action="Index" class="btn btn-secondary m-2">Back to List</a>
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {
