@@ -1,1 +1,2 @@
-# Relational Databese Final Project
+# Delta Events Managements System
+
